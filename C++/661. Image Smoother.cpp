@@ -8,8 +8,8 @@ public:
             for (int j=0; j<n; j++){
                 int sum = 0;
                 int count = 0;
-                for (int i_=max(0,i-1); i_<min(m,i+2); i_++){
-                    for (int j_=max(0,j-1); j_<min(n,j+2); j_++){
+                for (int i_=max(0,i-1); i_<=min(m-1,i+1); i_++){
+                    for (int j_=max(0,j-1); j_<=min(n-1,j+1); j_++){
                         sum += img[i_][j_];
                         count ++;
                     }
