@@ -1,18 +1,16 @@
 class Solution {
 public:
     int maxLengthBetweenEqualCharacters(std::string s) {
-        int current = s.length() - 1;
-        for (int i = s.length() - 1; i > 0; i--) {
-            for (int j = 0; j + i < s.length(); j++) {
-                if (s[j] == s[j + i]) {
-                    return i - 1;
-                }
+        int first = 0;
+        int end = s.size() - 1;
+        int result = -1;
+        // cout<<end;
+        for (int i=0; i<=end; i++){
+            for (int j=end; j>i; j--){
+                //cout<<i<<','<<j<<endl;
+                if (s[i] == s[j]) result = max(j-i-1, result);
             }
-            current--;
-        }
-        return -1;
+        } 
+        return result == -1 ? -1: result;
     }
 };
-
-// lancertech6's solution.
-// No time to watch yet. 
