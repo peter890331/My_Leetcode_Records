@@ -1,7 +1,7 @@
 class Solution {
 public:
     static bool mycompare(vector<int>&a, vector<int>&b) {
-    // compare function，用於sort的第三個變數，修改排列順序
+    //compare function，用於sort的第三個變數，修改排列順序
     return a[1] < b[1];
     }
 
@@ -14,9 +14,7 @@ public:
         }
         sort(jobs.begin(), jobs.end(), mycompare);
 
-        // for (int i=0; i<n; i++){
-        //     cout<<jobs[i][1]<<',';
-        // }
+        // for (int i=0; i<n; i++) cout<<jobs[i][1]<<',';
 
         map<int, int> dp; // <time, porfit>
         // dp[i] = dp[j] + porfit[i] or dp[i-1] 
@@ -33,8 +31,10 @@ public:
                 cur = max(cur, jobs[i][2]);
             }
             dp[jobs[i][1]] = cur;
-
             ret = max(ret, cur);
+            
+            // for(auto j=dp.begin(); j!=dp.end(); j++) cout<<j->second<<',';
+            //     cout<<endl;
         }
         return ret;
     }
