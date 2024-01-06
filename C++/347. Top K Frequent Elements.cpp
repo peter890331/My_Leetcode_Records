@@ -1,17 +1,17 @@
 class Solution {
 public:
     static bool mycompare(pair<int, int> a, pair<int, int> b) {
-    //compare function¡A¥Î©ósortªº²Ä¤T­ÓÅÜ¼Æ¡A­×§ï±Æ¦C¶¶§Ç
-    return a.second > b.second; // ­°§Ç±Æ¦C¡A¨Ì·Ópairsªº²Ä¤G­Ó¼Æ­È
+    // compare functionï¼Œç”¨æ–¼sortçš„ç¬¬ä¸‰å€‹è®Šæ•¸ï¼Œä¿®æ”¹æ’åˆ—é †åº
+    return a.second > b.second; // é™åºæ’åˆ—ï¼Œä¾ç…§pairsçš„ç¬¬äºŒå€‹æ•¸å€¼
 }
     vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map <int, int> mp;
         for (const int& i: nums){
             mp[i] ++;
         }
-    vector <pair<int, int>> v_mp (mp.begin(), mp.end()); // ±NmapÂà´«¬°vector¡Avector¥]§t©Ò¦³pairs
+    vector <pair<int, int>> v_mp (mp.begin(), mp.end()); // å°‡mapè½‰æ›ç‚ºvectorï¼ŒvectoråŒ…å«æ‰€æœ‰pairs
     vector <int> results;
-    sort(v_mp.begin(), v_mp.end(), mycompare); // sort¡A¨Ì·Ópairsªº²Ä¤G­Ó¼Æ­È
+    sort(v_mp.begin(), v_mp.end(), mycompare); // sortï¼Œä¾ç…§pairsçš„ç¬¬äºŒå€‹æ•¸å€¼
     for (int i=0; i<k; i++){
         results.push_back(v_mp[i].first);
     }
