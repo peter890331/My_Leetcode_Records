@@ -1,7 +1,7 @@
 class Solution {
 public:
     static bool mycompare(vector<int>&a, vector<int>&b) {
-    //compare function，用於sort的第三個變數，修改排列順序
+    // compare function，用於sort的第三個變數，修改排列順序
     return a[1] < b[1];
     }
 
