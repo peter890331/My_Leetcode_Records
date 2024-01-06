@@ -18,7 +18,7 @@ public:
         //     cout<<jobs[i][1]<<',';
         // }
 
-        map<int, int> dp; // dp[t] -> porfit[t]
+        map<int, int> dp; // <time, porfit>
         // dp[i] = dp[j] + porfit[i] or dp[i-1] 
         int ret = 0;
         for (int i=0; i<n; i++){
