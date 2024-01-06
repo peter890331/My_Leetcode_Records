@@ -17,14 +17,14 @@ public:
         //     cout<<jobs[i][1]<<',';
         // }
 
-        map<int, int> dp; // dp[t] -> val
-        // dp[i] = dp[j] + val[i] or dp[i-1] 
+        map<int, int> dp; // dp[t] -> porfit[t]
+        // dp[i] = dp[j] + porfit[i] or dp[i-1] 
         int ret = 0;
         for (int i=0; i<n; i++){
             int cur = ret;                                              // dp[i-1]
             auto iter = dp.upper_bound(jobs[i][0]);
             if (iter != dp.begin())
-                cur = max(cur, prev(iter, 1)->second + jobs[i][2]);     // dp[j] + val[i]
+                cur = max(cur, prev(iter, 1)->second + jobs[i][2]);     // dp[j] + porfit[i]
             else                                                        // if dp.upper_bound找不到解，已經是dp.begin()
                 cur = max(cur, jobs[i][2]);
             dp[jobs[i][1]] = cur;
