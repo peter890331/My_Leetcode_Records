@@ -2,20 +2,20 @@ class Solution {
 public:
     long long wonderfulSubstrings(string word) {
         int n = word.size();                    // 取得字串的長度。
-        int state = 0;                          // 初始化狀態為 0，表示所有字元出現的次數都是偶數次。
+        int state = 0;                          // 初始化狀態為 0，也就是 0000000000。
         vector<int> count(1<<10);               // 1<<10 是位元操作符，代表將數字 1 向左移動 10 位，相當於 2 的 10 次方，也就是 1024。用來記錄各種狀態出現的次數。
         count[0] += 1;                          // 什麼字符都沒有，所有字符出現 0 次。
 
         long long ans = 0;
         for (int i=0; i<n; i++){
-            int k = word[i] - 'a';              // 取得字元對應的索引值。
-            state = state ^ (1<<k);             // state[i]，更新狀態，將第 k 位的二進制翻轉一次。
+            int k = word[i] - 'a';              // 取得字符對應的索引值。
+            state = state ^ (1<<k);             // state[i]，更新狀態，將狀態第 k 位的二進制翻轉一次。
 
-            ans += count[state];                // 全是偶數的狀態，找 state 相同，找 state[i] = state[j]。
+            ans += count[state];                // 第一個情況，全是偶數，找 state 相同，找 state[i] = state[j]。
 
             for (int k=0; k<10; k++){           // 遍歷所有可能的奇數狀態。
-                int stateJ = state ^ (1<<k);    // 將每一位的二進制翻轉一次。
-                ans += count[stateJ];           // 一個奇數的狀態，state 和 stateJ 差一個位元不同。
+                int stateJ = state ^ (1<<k);    // 將狀態每一位的二進制都翻轉一次。
+                ans += count[stateJ];           // 第二個情況，某一個字符是奇數，state 和 stateJ 差一個位元不同。
             }
 
             count[state]++;                     // 更新當前狀態的出現次數。
@@ -24,6 +24,7 @@ public:
     }
 };
 
+// Prefix.
 // XXXXj[XXXXXi]XX
 
 // 第一個情況，全是偶數：
@@ -38,7 +39,7 @@ public:
 // 第二個情況，某一個字符是奇數：
 // state[i] = 000100100[1]。
 // state[j] = 000100100[0]。
-// 有一位不同。
+// 一個位元不同。
 // state[j] = state[i] ^ (1<<10)
 
 // Hash + Prefix + state.
