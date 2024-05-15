@@ -12,12 +12,14 @@ public:
                 if (grid[i][j] == 1) q.push({i, j});    // 初始隊列，包含grid中所有thief。
             }
         }
+        
         // 拓樸排序結構的BFS，剝洋蔥？
         // 修改grid，將grid[i][j]修改成從(i, j)到其最近的thief的距離再加1(再加1的原因是原本的thief就是1，要與其做出區別)。
         // grid[i][j]: the distance from (i, j) to its nearest thief + 1.
         // 1 0 0    1 2 3
         // 0 0 0 => 2 3 2
         // 0 0 1    3 2 1
+
         while(!q.empty()){
 
             auto [x, y] = q.front();
