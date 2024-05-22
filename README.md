@@ -3,7 +3,7 @@ My pathetic Leetcode records until I gave up being an engineer.
 
 Categorize by language in master branch.
 
-LeetCode Profile：https://leetcode.com/u/peter890331/
+Leetcode Profile：https://leetcode.com/u/peter890331/
 
 ![LeetCode Stats](https://leetcard.jacoblin.cool/peter890331?theme=wtf&font=Bai%20Jamjuree&ext=activity)
 
